@@ -1,11 +1,7 @@
-import "./App.css";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
 function App() {
-  return (
-    <>
-      <h1>Welcome to Hearthstone Pub!!!</h1>
-    </>
-  );
+  return <Button colorScheme="blue">Welcome!</Button>;
 }
 
 export default App;
