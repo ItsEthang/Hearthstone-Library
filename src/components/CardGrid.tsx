@@ -1,30 +1,8 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
 import { Text } from "@chakra-ui/react";
-
-interface Card {
-  cardId: string;
-  name: string;
-}
-
-interface FetchCardsResponse {
-  Classic: Card[];
-}
+import useCards from "../hooks/useCards";
 
 const CardGrid = () => {
-  const [cards, setCards] = useState<Card[]>([]);
-  const [err, setErr] = useState("");
-
-  useEffect(() => {
-    apiClient
-      .get<FetchCardsResponse>("/cards")
-      .then((res) => {
-        setCards(res.data.Classic);
-      })
-      .catch((err) => {
-        setErr(err.message);
-      });
-  });
+  const { cards, err } = useCards();
 
   return (
     <>
