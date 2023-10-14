@@ -15,7 +15,7 @@ const Header = () => {
         fontSize="80px"
         fontWeight="bold"
       >
-        Cards
+        Cards Library
       </Center>
     </>
   );

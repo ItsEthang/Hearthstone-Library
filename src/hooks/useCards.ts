@@ -2,17 +2,18 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
-interface Card {
+export interface CardType {
     cardId: string;
     name: string;
+    img?: string;
   }
   
   interface FetchCardsResponse {
-    Classic: Card[];
+    Classic: CardType[];
   }
 
 const useCards = () => {
-    const [cards, setCards] = useState<Card[]>([]);
+    const [cards, setCards] = useState<CardType[]>([]);
   const [err, setErr] = useState("");
 
   //REMEMBER THE DEPENDENCY ARRAY WHEN USING THE useEffect() HOOK!
