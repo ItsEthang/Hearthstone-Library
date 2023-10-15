@@ -6,6 +6,14 @@ export interface CardType {
     cardId: string;
     name: string;
     img?: string;
+    flavor?: string;
+    text?: string;
+    type: string;
+    rarity: string;
+    cardSet: string;
+    spellSchool?:string;
+    playerClass: string;
+    artist?: string;
   }
   
   interface FetchCardsResponse {

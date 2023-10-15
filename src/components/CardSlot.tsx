@@ -1,6 +1,7 @@
 import { Card, CardBody, Heading, Image } from "@chakra-ui/react";
 import { CardType } from "../hooks/useCards";
 import PlaceholderCard from "../assets/PlaceholderCard.webp";
+import CardInfo from "./CardInfo";
 
 interface Props {
   card: CardType;
