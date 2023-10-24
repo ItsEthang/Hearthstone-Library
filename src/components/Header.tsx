@@ -14,6 +14,7 @@ const Header = () => {
         minHeight="300px"
         fontSize="80px"
         fontWeight="bold"
+        color="white"
       >
         Cards Library
       </Center>
