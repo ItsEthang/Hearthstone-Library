@@ -1,4 +1,4 @@
-import { Center, Box } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
 import HeaderBgImg from "../assets/HsHeaderBg.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
 

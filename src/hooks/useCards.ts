@@ -57,13 +57,14 @@ export interface CardType {
   }
 
 const useCards = () => {
-    const [cards, setCards] = useState<CardType[]>([]);
+  const [cards, setCards] = useState<CardType[]>([]);
   const [err, setErr] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
 
   //REMEMBER THE DEPENDENCY ARRAY WHEN USING THE useEffect() HOOK!
   useEffect(() => {
     const controller = new AbortController();
-
+    setIsLoading(true)
     apiClient
       .get<FetchCardsResponse>("/cards", {signal: controller.signal})
       .then((res) => {
@@ -79,16 +80,18 @@ const useCards = () => {
         ];
         const validCards = allCards.filter(card => card.img !== undefined);
         setCards(validCards);
+        setIsLoading(false);
       })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setErr(err.message);
+        setIsLoading(false);
       });
 
       return () => controller.abort();
   }, []);
 
-  return {cards, err}
+  return {cards, err, isLoading}
 }
 
 export default useCards
