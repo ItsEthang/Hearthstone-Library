@@ -1,6 +1,7 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import Header from "./components/Header";
 import CardGrid from "./components/CardGrid";
+import SetList from "./components/SetList";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem bg="red.300" area={"filter"}>
-        Filter
+        <SetList />
       </GridItem>
       <GridItem bg="black.300" area={"main"}>
         <CardGrid />

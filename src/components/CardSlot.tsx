@@ -10,11 +10,7 @@ interface Props {
 const CardSlot = ({ card, onCardClick }: Props) => {
   return (
     <>
-      <Card
-        borderRadius="15px"
-        overflow="hidden"
-        onClick={() => onCardClick(card)}
-      >
+      <Card onClick={() => onCardClick(card)}>
         <Image src={card.img || PlaceholderCard} />
         <CardBody>
           <Heading fontSize="xl" textAlign="center">

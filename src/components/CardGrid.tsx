@@ -5,6 +5,7 @@ import { useState } from "react";
 import { CardType } from "../hooks/useCards";
 import CardInfo from "./CardInfo";
 import CardSkeleton from "./CardSkeleton";
+import CardContainer from "./CardContainer";
 
 const CardGrid = () => {
   const { cards, err, isLoading } = useCards();
@@ -18,14 +19,18 @@ const CardGrid = () => {
       <SimpleGrid columns={{ sm: 2, md: 3, xl: 5 }} spacing="30px" p="20px">
         {isLoading &&
           skeletons.map((skeleton) => (
-            <CardSkeleton key={skeleton}></CardSkeleton>
+            <CardContainer>
+              <CardSkeleton key={skeleton}></CardSkeleton>
+            </CardContainer>
           ))}
         {cards.map((card) => (
-          <CardSlot
-            card={card}
-            key={card.cardId}
-            onCardClick={setSelectedCard}
-          />
+          <CardContainer>
+            <CardSlot
+              card={card}
+              key={card.cardId}
+              onCardClick={setSelectedCard}
+            />
+          </CardContainer>
         ))}
       </SimpleGrid>
     </>
