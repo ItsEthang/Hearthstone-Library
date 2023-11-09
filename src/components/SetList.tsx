@@ -1,21 +1,27 @@
 import useFilters from "../hooks/useFilters";
+import { Select, Skeleton } from "@chakra-ui/react";
 
 const SetList = () => {
-  const { standard, wild } = useFilters();
+  const { standard, wild, isLoading, err } = useFilters();
+
+  if (err) return null;
+  if (isLoading) return <Skeleton height="40px" />;
+
   return (
     <>
-      <h2>Standard Sets</h2>
-      <ul>
+      <Select placeholder="Filter by Sets">
         {standard.map((set) => (
-          <li key={set}>{set}</li>
+          <option key={set} value={set}>
+            {set}
+          </option>
         ))}
-      </ul>
-      <h2>Wild Sets</h2>
-      <ul>
+
         {wild.map((set) => (
-          <li key={set}>{set}</li>
+          <option key={set} value={set}>
+            {set}
+          </option>
         ))}
-      </ul>
+      </Select>
     </>
   );
 };

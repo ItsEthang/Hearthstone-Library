@@ -19,7 +19,7 @@ function App() {
           <Header />
         </GridItem>
       </Show>
-      <GridItem bg="red.300" area={"filter"}>
+      <GridItem bg="blue.900" area={"filter"}>
         <SetList />
       </GridItem>
       <GridItem bg="black.300" area={"main"}>
