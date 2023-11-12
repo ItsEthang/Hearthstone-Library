@@ -1,7 +1,11 @@
 import useFilters from "../hooks/useFilters";
 import { Select, Skeleton } from "@chakra-ui/react";
 
-const SetList = () => {
+interface Props {
+  onSelectSet: (cardSet: string) => void;
+}
+
+const SetList = ({ onSelectSet }: Props) => {
   const { standard, wild, isLoading, err } = useFilters();
 
   if (err) return null;
@@ -9,15 +13,18 @@ const SetList = () => {
 
   return (
     <>
-      <Select placeholder="Filter by Sets">
-        {standard.map((set) => (
-          <option key={set} value={set}>
+      <Select
+        placeholder="Filter by Sets"
+        onChange={(e) => onSelectSet(e.target.value)}
+      >
+        {standard.map((set, index) => (
+          <option key={index} value={set}>
             {set}
           </option>
         ))}
 
-        {wild.map((set) => (
-          <option key={set} value={set}>
+        {wild.map((set, index) => (
+          <option key={index} value={set}>
             {set}
           </option>
         ))}

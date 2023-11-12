@@ -2,8 +2,10 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import Header from "./components/Header";
 import CardGrid from "./components/CardGrid";
 import SetList from "./components/SetList";
+import { useState } from "react";
 
 function App() {
+  const [selectedSet, setSelectedSet] = useState<string | null>(null);
   return (
     <Grid
       templateAreas={{
@@ -20,10 +22,10 @@ function App() {
         </GridItem>
       </Show>
       <GridItem bg="blue.900" area={"filter"}>
-        <SetList />
+        <SetList onSelectSet={(cardSet) => setSelectedSet(cardSet)} />
       </GridItem>
       <GridItem bg="black.300" area={"main"}>
-        <CardGrid />
+        <CardGrid selectedSet={selectedSet} />
       </GridItem>
     </Grid>
   );

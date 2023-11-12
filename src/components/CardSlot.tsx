@@ -12,11 +12,11 @@ const CardSlot = ({ card, onCardClick }: Props) => {
     <>
       <Card onClick={() => onCardClick(card)}>
         <Image src={card.img || PlaceholderCard} />
-        <CardBody>
+        {/* <CardBody>
           <Heading fontSize="xl" textAlign="center">
             {card.name}
           </Heading>
-        </CardBody>
+        </CardBody> */}
       </Card>
     </>
   );
