@@ -1,11 +1,21 @@
 import useFilters from "../hooks/useFilters";
-import { Select, Skeleton } from "@chakra-ui/react";
+import {
+  Text,
+  Skeleton,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from "@chakra-ui/react";
+import { BsChevronDown } from "react-icons/bs";
 
 interface Props {
+  selectedSet: string | null;
   onSelectSet: (cardSet: string) => void;
 }
 
-const SetList = ({ onSelectSet }: Props) => {
+const SetList = ({ selectedSet, onSelectSet }: Props) => {
   const { standard, wild, isLoading, err } = useFilters();
 
   if (err) return null;
@@ -13,22 +23,55 @@ const SetList = ({ onSelectSet }: Props) => {
 
   return (
     <>
-      <Select
+      <Menu>
+        <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+          {selectedSet ? selectedSet : "Standard Cards"}
+        </MenuButton>
+        <MenuList maxHeight="10em" overflow="scroll">
+          <Text fontSize="lg" color="#123" fontStyle="italic" px="12px">
+            Standard Sets
+          </Text>
+          {standard.map((set, index) => (
+            <MenuItem
+              key={index}
+              onClick={() => {
+                onSelectSet(set);
+              }}
+            >
+              {set}
+            </MenuItem>
+          ))}
+          <Text fontSize="lg" color="#123" fontStyle="italic" px="12px">
+            Wild Sets
+          </Text>
+          {wild.map((set, index) => (
+            <MenuItem
+              key={index}
+              onClick={() => {
+                onSelectSet(set);
+              }}
+            >
+              {set}
+            </MenuItem>
+          ))}
+        </MenuList>
+      </Menu>
+      {/* <Select
         placeholder="Filter by Sets"
         onChange={(e) => onSelectSet(e.target.value)}
       >
         {standard.map((set, index) => (
-          <option key={index} value={set}>
+          <MenuItem key={index} value={set}>
             {set}
-          </option>
+          </MenuItem>
         ))}
 
         {wild.map((set, index) => (
-          <option key={index} value={set}>
+          <MenuItem key={index} value={set}>
             {set}
-          </option>
+          </MenuItem>
         ))}
-      </Select>
+      </Select> */}
     </>
   );
 };

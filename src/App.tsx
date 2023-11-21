@@ -22,7 +22,10 @@ function App() {
         </GridItem>
       </Show>
       <GridItem bg="blue.900" area={"filter"}>
-        <SetList onSelectSet={(cardSet) => setSelectedSet(cardSet)} />
+        <SetList
+          selectedSet={selectedSet}
+          onSelectSet={(cardSet) => setSelectedSet(cardSet)}
+        />
       </GridItem>
       <GridItem bg="black.300" area={"main"}>
         <CardGrid selectedSet={selectedSet} />
