@@ -24,7 +24,7 @@ const SetList = ({ selectedSet, onSelectSet }: Props) => {
   return (
     <>
       <Menu>
-        <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+        <MenuButton as={Button} rightIcon={<BsChevronDown />} marginRight="3em">
           {selectedSet ? selectedSet : "Standard Cards"}
         </MenuButton>
         <MenuList maxHeight="10em" overflow="scroll">
@@ -56,22 +56,6 @@ const SetList = ({ selectedSet, onSelectSet }: Props) => {
           ))}
         </MenuList>
       </Menu>
-      {/* <Select
-        placeholder="Filter by Sets"
-        onChange={(e) => onSelectSet(e.target.value)}
-      >
-        {standard.map((set, index) => (
-          <MenuItem key={index} value={set}>
-            {set}
-          </MenuItem>
-        ))}
-
-        {wild.map((set, index) => (
-          <MenuItem key={index} value={set}>
-            {set}
-          </MenuItem>
-        ))}
-      </Select> */}
     </>
   );
 };
