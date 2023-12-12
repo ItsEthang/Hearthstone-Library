@@ -1,6 +1,7 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import useCards from "../hooks/useCards";
 import useSet from "../hooks/useSet";
+import useClass from "../hooks/useClass";
 import CardSlot from "./CardSlot";
 import { useState } from "react";
 import { CardType } from "../hooks/useCards";
@@ -10,15 +11,17 @@ import CardContainer from "./CardContainer";
 
 interface Props {
   selectedSet: string | null;
+  selectedClass: string | null;
 }
 
-const CardGrid = ({ selectedSet }: Props) => {
-  // const { cards, err, isLoading } = selectedSet
-  //   ? useSet(selectedSet)
-  //   : useCards();
+const CardGrid = ({ selectedSet, selectedClass }: Props) => {
   const setResults = useSet(selectedSet);
+  // const classResults = useClass(selectedClass);
   const cardResults = useCards();
   const { cards, err, isLoading } = selectedSet ? setResults : cardResults;
+  const filteredCards = cards.filter((card) =>
+    selectedClass ? card.playerClass === selectedClass : true
+  );
   const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
   const closeCardInfo = () => setSelectedCard(null);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -33,7 +36,7 @@ const CardGrid = ({ selectedSet }: Props) => {
               <CardSkeleton />
             </CardContainer>
           ))}
-        {cards.map((card) => (
+        {filteredCards.map((card) => (
           <CardContainer key={card.cardId}>
             <CardSlot card={card} onCardClick={setSelectedCard} />
           </CardContainer>

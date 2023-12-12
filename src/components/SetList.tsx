@@ -9,6 +9,7 @@ import {
   MenuItem,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
+import FilterContainer from "./FilterContainer";
 
 interface Props {
   selectedSet: string | null;
@@ -27,7 +28,7 @@ const SetList = ({ selectedSet, onSelectSet }: Props) => {
         <MenuButton as={Button} rightIcon={<BsChevronDown />} marginRight="3em">
           {selectedSet ? selectedSet : "Standard Cards"}
         </MenuButton>
-        <MenuList maxHeight="10em" overflow="scroll">
+        <FilterContainer>
           <Text fontSize="lg" color="#123" fontStyle="italic" px="12px">
             Standard Sets
           </Text>
@@ -54,7 +55,7 @@ const SetList = ({ selectedSet, onSelectSet }: Props) => {
               {set}
             </MenuItem>
           ))}
-        </MenuList>
+        </FilterContainer>
       </Menu>
     </>
   );

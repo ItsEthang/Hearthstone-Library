@@ -36,7 +36,7 @@ function App() {
         </HStack>
       </GridItem>
       <GridItem bg="black.300" area={"main"}>
-        <CardGrid selectedSet={selectedSet} />
+        <CardGrid selectedSet={selectedSet} selectedClass={selectedClass} />
       </GridItem>
     </Grid>
   );

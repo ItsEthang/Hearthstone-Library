@@ -9,6 +9,7 @@ import {
   MenuItem,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
+import FilterContainer from "./FilterContainer";
 
 interface Props {
   selectedClass: string | null;
@@ -27,7 +28,7 @@ const ClassList = ({ selectedClass, onSelectClass }: Props) => {
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
           {selectedClass ? selectedClass : "All Classes"}
         </MenuButton>
-        <MenuList maxHeight="10em" overflow="scroll">
+        <FilterContainer>
           {classes.map((classItem, index) => (
             <MenuItem
               key={index}
@@ -38,7 +39,7 @@ const ClassList = ({ selectedClass, onSelectClass }: Props) => {
               {classItem}
             </MenuItem>
           ))}
-        </MenuList>
+        </FilterContainer>
       </Menu>
     </>
   );
