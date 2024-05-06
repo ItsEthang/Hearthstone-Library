@@ -1,7 +1,6 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import useCards from "../hooks/useCards";
 import useSet from "../hooks/useSet";
-import useClass from "../hooks/useClass";
 import CardSlot from "./CardSlot";
 import { useState } from "react";
 import { CardType } from "../hooks/useCards";
